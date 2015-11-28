@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Point
+    internal class Point
     {
         public int X;
         public int Y;
         public char Symbol;
+
+        public Point() {}
+
+        public Point(int x, int y, char symbol)
+        {
+            X = x;
+            Y = y;
+            Symbol = symbol;
+        }
 
         public void Draw()
         {
