@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
@@ -16,33 +16,12 @@ namespace Snake
             Point p2 = new Point(4, 5, '#');
             p2.Draw();
 
-            List<int> numList = new List<int>();
-            numList.Add(0);
-            numList.Add(1);
-            numList.Add(2);
+            HorizontalLine hl = new HorizontalLine(5, 10, 8, '+');
+            hl.Draw();
 
-            int x = numList[0];
-            int y = numList[1];
-            int z = numList[2];
+            VerticalLine vl = new VerticalLine(5, 8, 13, '+');
+            vl.Draw();
 
-            foreach (int i in numList)
-            {
-                Console.WriteLine(i);    
-            }
-
-            numList.RemoveAt(0);
-
-            List<Point> points = new List<Point>();
-            points.Add(p1);
-            points.Add(p2);
-            Point p3 = new Point(7, 7, '$');
-            Point p4 = new Point(10, 9, '&');
-            points.Add(p3);
-            points.Add(p4);
-            foreach (Point p in points)
-            {
-                p.Draw();
-            }
             Console.ReadKey();
         }
     }
