@@ -61,5 +61,19 @@ namespace Snake
                     break;
             }
         }
+
+        public bool Eat(Point food)
+        {
+            //Point head = GetNextPoint();
+            Point head = points.Last();
+            // Питание происходит при совпадении с точкой головы змейки
+            if (head.IsHit(food))
+            {
+                food.Symbol = head.Symbol;
+                points.Add(food);
+                return true;
+            }
+            return false;
+        }
     }
 }
