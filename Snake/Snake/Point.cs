@@ -63,7 +63,7 @@ namespace Snake
             return X + "," + Y + "," + Symbol;
         }
 
-        public void Clear()
+        internal void Clear()
         {
             Symbol = ' ';
             Draw();
