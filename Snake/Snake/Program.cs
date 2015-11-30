@@ -9,19 +9,15 @@ namespace Snake
 {
     internal class Program
     {
+        // TODO: Добавить надпись Game Over
+        // TODO: Сделать, чтобы при нажимании стрелки в противоположную сторону, змейка не убивалась
+        // TODO: Сделать, чтобы еда не проходила сквозь тело змейки
         private static void Main(string[] args)
         {
-            /*Console.SetBufferSize(80, 25);
+            Console.SetBufferSize(80, 25);
 
-            // Отрисовка рамки
-            HorizontalLine topLine = new HorizontalLine(0, 78, 0, '+');
-            topLine.Draw();
-            HorizontalLine bottomLine = new HorizontalLine(0, 78, 24, '+');
-            bottomLine.Draw();
-            VerticalLine leftLine = new VerticalLine(0, 0, 24, '+');
-            leftLine.Draw();
-            VerticalLine rightLine = new VerticalLine(78, 0, 24, '+');
-            rightLine.Draw();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             // Отрисовка змейки
             Point p = new Point(4, 5, '*');
@@ -36,6 +32,10 @@ namespace Snake
             // Движение змейки
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -53,28 +53,7 @@ namespace Snake
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-            }*/
-
-            VerticalLine vl = new VerticalLine(5, 0, 10, '%');
-            Draw(vl);
-
-            Point p = new Point(4, 5, '*');
-            Figure fSnake = new Snake(p, 4, Direction.Right);
-            Draw(fSnake);
-            Snake snake = (Snake) fSnake;
-
-            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
-
-            List<Figure> figures = new List<Figure>();
-            figures.Add(fSnake);
-            figures.Add(vl);
-            figures.Add(hl);
-
-            foreach (var f in figures)
-            {
-                f.Draw();
             }
-            Console.ReadKey();
         }
 
         static void Draw(Figure figure)
