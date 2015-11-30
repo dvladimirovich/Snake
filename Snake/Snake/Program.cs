@@ -11,7 +11,7 @@ namespace Snake
     {
         private static void Main(string[] args)
         {
-            Console.SetBufferSize(80, 25);
+            /*Console.SetBufferSize(80, 25);
 
             // Отрисовка рамки
             HorizontalLine topLine = new HorizontalLine(0, 78, 0, '+');
@@ -53,8 +53,33 @@ namespace Snake
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
-            }
+            }*/
 
+            VerticalLine vl = new VerticalLine(5, 0, 10, '%');
+            Draw(vl);
+
+            Point p = new Point(4, 5, '*');
+            Figure fSnake = new Snake(p, 4, Direction.Right);
+            Draw(fSnake);
+            Snake snake = (Snake) fSnake;
+
+            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
+
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fSnake);
+            figures.Add(vl);
+            figures.Add(hl);
+
+            foreach (var f in figures)
+            {
+                f.Draw();
+            }
+            Console.ReadKey();
+        }
+
+        static void Draw(Figure figure)
+        {
+            figure.Draw();
         }
     }
 }
