@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Snake
 {
@@ -48,20 +46,24 @@ namespace Snake
             switch (key)
             {
                 case ConsoleKey.LeftArrow:
-                    direction = Direction.Left;
+                    if (direction != Direction.Right)
+                        direction = Direction.Left;
                     break;
                 case ConsoleKey.RightArrow:
-                    direction = Direction.Right;
+                    if (direction != Direction.Left)
+                        direction = Direction.Right;
                     break;
                 case ConsoleKey.UpArrow:
-                    direction = Direction.Up;
+                    if (direction != Direction.Down)
+                        direction = Direction.Up;
                     break;
                 case ConsoleKey.DownArrow:
-                    direction = Direction.Down;
+                    if (direction != Direction.Up)
+                        direction = Direction.Down;
                     break;
+                default: break;
             }
         }
-
         public bool Eat(Point food)
         {
             //Point head = GetNextPoint();

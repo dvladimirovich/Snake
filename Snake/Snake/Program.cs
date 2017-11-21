@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Snake
 {
     internal class Program
     {
-        // TODO: Добавить надпись Game Over
-        // TODO: Сделать, чтобы при нажимании стрелки в противоположную сторону, змейка не убивалась
-        // TODO: Сделать, чтобы еда не проходила сквозь тело змейки
         private static void Main(string[] args)
         {
-            Console.SetBufferSize(80, 25);
+            int x = 80, y = 25;
+            Console.SetWindowSize(x, y);
 
-            Walls walls = new Walls(80, 25);
+            Walls walls = new Walls(x, y);
             walls.Draw();
 
             // Отрисовка змейки
@@ -34,6 +28,9 @@ namespace Snake
             {
                 if (walls.IsHit(snake) || snake.IsHitTail())
                 {
+                    Console.SetCursorPosition(x / 2 - 5, y / 2);
+                    Console.Write("GAME OVER!");
+                    Console.ReadKey();
                     break;
                 }
                 if (snake.Eat(food))
@@ -54,6 +51,7 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
+
         }
 
         static void Draw(Figure figure)
